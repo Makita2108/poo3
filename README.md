@@ -68,9 +68,3 @@ Es recomendable realizar al menos 4 commits significativos (ya planificados por 
 - API REST con Django REST Framework.
 - Registro de movimientos de inventario (entradas/salidas) con historial.
 - Permisos más finos (grupos/roles).
-
----
-Si quieres, puedo también:
-- Generar un script `fixtures` con datos de ejemplo.
-- Añadir pruebas unitarias básicas para los modelos y vistas.
-- Preparar instrucciones concretas para subir a GitHub y crear el archivo `repo_url.txt` final.
