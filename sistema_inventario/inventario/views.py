@@ -8,6 +8,11 @@ from django.views.generic import (
 from .models import Item, Repuesto
 
 
+# Vistas de CRUD para Item y Repuesto
+# Las vistas de creación/edición/eliminación requieren que el usuario esté autenticado
+# (uso de LoginRequiredMixin). Las vistas de listar/mostrar detalle son públicas.
+
+
 # Item views
 class ItemListView(ListView):
 	model = Item

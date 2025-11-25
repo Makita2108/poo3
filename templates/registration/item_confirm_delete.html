@@ -1,9 +1,0 @@
-{% extends 'base.html' %}
-{% block content %}
-<h2>Eliminar Item</h2>
-<p>¿Desea eliminar "{{ object }}"?</p>
-<form method="post">{% csrf_token %}
-  <button type="submit">Confirmar eliminación</button>
-  <a href="{% url 'inventario:item_list' %}">Cancelar</a>
-</form>
-{% endblock %}
