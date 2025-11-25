@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sistema Inventario</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-css-reset/dist/reset.min.css">
+  <style>
+    body{font-family:Segoe UI, Roboto, Arial; padding:1rem}
+    nav a{margin-right:1rem}
+    .container{max-width:900px;margin:0 auto}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Sistema de Inventario</h1>
+      <nav>
+        <a href="{% url 'inventario:item_list' %}">Items</a>
+        <a href="{% url 'inventario:repuesto_list' %}">Repuestos</a>
+        <a href="/admin/">Admin</a>
+      </nav>
+      <hr>
+    </header>
+
+    {% block content %}{% endblock %}
+
+  </div>
+</body>
+</html>

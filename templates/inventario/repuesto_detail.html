@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ repuesto.nombre }} ({{ repuesto.codigo }})</h2>
+<p>Stock: {{ repuesto.stock }}</p>
+<p>Proveedor: {{ repuesto.proveedor }}</p>
+{% if repuesto.item_relacionado %}
+<p>Relacionado con: <a href="{% url 'inventario:item_detail' repuesto.item_relacionado.pk %}">{{ repuesto.item_relacionado.nombre }}</a></p>
+{% endif %}
+<p>Fecha compra: {{ repuesto.fecha_compra }}</p>
+<p>
+  <a href="{% url 'inventario:repuesto_edit' repuesto.pk %}">Editar</a> |
+  <a href="{% url 'inventario:repuesto_delete' repuesto.pk %}">Eliminar</a>
+</p>
+{% endblock %}
