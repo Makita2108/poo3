@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Items</h2>
+<p><a href="{% url 'inventario:item_add' %}">Crear nuevo Item</a></p>
+<ul>
+  {% for item in items %}
+    <li>
+      <a href="{% url 'inventario:item_detail' item.pk %}">{{ item.nombre }}</a>
+      — Cantidad: {{ item.cantidad }} — Ubicación: {{ item.ubicacion }}
+    </li>
+  {% empty %}
+    <li>No hay items registrados.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

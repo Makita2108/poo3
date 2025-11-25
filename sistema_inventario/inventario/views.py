@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import (
 	ListView, DetailView, CreateView, UpdateView, DeleteView
 )
@@ -19,21 +21,23 @@ class ItemDetailView(DetailView):
 	context_object_name = 'item'
 
 
-class ItemCreateView(CreateView):
+class ItemCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 	model = Item
 	fields = ['nombre', 'descripcion', 'cantidad', 'ubicacion']
 	template_name = 'inventario/item_form.html'
 	success_url = reverse_lazy('inventario:item_list')
+	success_message = 'Item creado correctamente.'
 
 
-class ItemUpdateView(UpdateView):
+class ItemUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 	model = Item
 	fields = ['nombre', 'descripcion', 'cantidad', 'ubicacion']
 	template_name = 'inventario/item_form.html'
 	success_url = reverse_lazy('inventario:item_list')
+	success_message = 'Item actualizado correctamente.'
 
 
-class ItemDeleteView(DeleteView):
+class ItemDeleteView(LoginRequiredMixin, DeleteView):
 	model = Item
 	template_name = 'inventario/item_confirm_delete.html'
 	success_url = reverse_lazy('inventario:item_list')
@@ -52,21 +56,23 @@ class RepuestoDetailView(DetailView):
 	context_object_name = 'repuesto'
 
 
-class RepuestoCreateView(CreateView):
+class RepuestoCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 	model = Repuesto
 	fields = ['nombre', 'codigo', 'stock', 'item_relacionado', 'proveedor', 'fecha_compra']
 	template_name = 'inventario/repuesto_form.html'
 	success_url = reverse_lazy('inventario:repuesto_list')
+	success_message = 'Repuesto creado correctamente.'
 
 
-class RepuestoUpdateView(UpdateView):
+class RepuestoUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 	model = Repuesto
 	fields = ['nombre', 'codigo', 'stock', 'item_relacionado', 'proveedor', 'fecha_compra']
 	template_name = 'inventario/repuesto_form.html'
 	success_url = reverse_lazy('inventario:repuesto_list')
+	success_message = 'Repuesto actualizado correctamente.'
 
 
-class RepuestoDeleteView(DeleteView):
+class RepuestoDeleteView(LoginRequiredMixin, DeleteView):
 	model = Repuesto
 	template_name = 'inventario/repuesto_confirm_delete.html'
 	success_url = reverse_lazy('inventario:repuesto_list')

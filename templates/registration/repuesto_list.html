@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Repuestos</h2>
+<p><a href="{% url 'inventario:repuesto_add' %}">Agregar Repuesto</a></p>
+<ul>
+  {% for r in repuestos %}
+    <li>
+      <a href="{% url 'inventario:repuesto_detail' r.pk %}">{{ r.nombre }}</a>
+      — Código: {{ r.codigo }} — Stock: {{ r.stock }}
+    </li>
+  {% empty %}
+    <li>No hay repuestos registrados.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
